@@ -1,0 +1,56 @@
+# Environment variables & secrets (CRITICAL: never commit tokens)
+.env
+*.env
+.env.*
+!.env.example
+
+# Large Data & Telegram Export Dumps
+result.json
+*.json
+!railway.json
+!render.yaml
+!package.json
+
+# SQLite Databases (prevent committing binary database blobs)
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+.venv/
+env/
+ENV/
+
+# Streamlit
+.streamlit/
+
+# OS / Editor temporary files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
