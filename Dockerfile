@@ -17,8 +17,5 @@ COPY . .
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
 
-# Expose Streamlit default port
-EXPOSE 8501
-
-# Default command: launch the multi-process runner or custom target
+# Default command: launch both bots
 CMD ["python", "run_all.py"]

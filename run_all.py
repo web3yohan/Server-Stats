@@ -25,7 +25,7 @@ signal.signal(signal.SIGTERM, signal_handler)
 
 def start_services():
     print("=" * 60)
-    print("[CLOUD MANAGER] Initializing Server Stats Cloud Services")
+    print("[CLOUD MANAGER] Initializing Server Stats Bot Services")
     print(f"Working Directory: {BOT_DIR}")
     print("=" * 60)
 
@@ -51,26 +51,11 @@ def start_services():
     else:
         print("[SKIP] TELEGRAM_BOT_TOKEN not set in environment.")
 
-    # 3. Streamlit Dashboard (if PORT or ENABLE_DASHBOARD is present)
-    port = os.getenv("PORT", "8501")
-    if os.getenv("ENABLE_DASHBOARD", "true").lower() in ("true", "1", "yes"):
-        print(f"[LAUNCH] Starting Streamlit Dashboard on port {port}...")
-        p_web = subprocess.Popen(
-            [
-                sys.executable, "-m", "streamlit", "run", "app.py",
-                "--server.port", str(port),
-                "--server.address", "0.0.0.0",
-                "--server.headless", "true"
-            ],
-            cwd=str(BOT_DIR)
-        )
-        processes.append(p_web)
-
     if not processes:
-        print("[ERROR] No services could be started! Please configure your environment variables.")
+        print("[ERROR] Neither DISCORD_TOKEN nor TELEGRAM_BOT_TOKEN was found! Please configure your environment variables.")
         sys.exit(1)
 
-    print("[SUCCESS] All active services launched. Monitoring...")
+    print("[SUCCESS] Bot services launched. Monitoring...")
     while True:
         for p in list(processes):
             poll = p.poll()
