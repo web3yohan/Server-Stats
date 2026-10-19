@@ -10,6 +10,7 @@ result.json
 !railway.json
 !render.yaml
 !package.json
+!vercel.json
 
 # SQLite Databases (prevent committing binary database blobs)
 *.db
